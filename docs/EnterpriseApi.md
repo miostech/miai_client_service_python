@@ -1,25 +1,24 @@
-# openapi_client.AccountApi
+# openapi_client.EnterpriseApi
 
 All URIs are relative to *https://mios-direct.azurewebsites.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_user_in_product**](AccountApi.md#add_user_in_product) | **POST** /account/add/user/in/product/{email}/{id_product}/{rule} | Add user in product
-[**create_account**](AccountApi.md#create_account) | **POST** /account/ | Create account
-[**delete_user_in_product**](AccountApi.md#delete_user_in_product) | **DELETE** /account/delete/user/in/product/{email}/{id_product} | Delete user in product
-[**get_account_by_email_and_password**](AccountApi.md#get_account_by_email_and_password) | **GET** /account/{email}/{password} | Get account by email and password
-[**get_account_by_token**](AccountApi.md#get_account_by_token) | **GET** /account/me | Get account by token
-[**get_user_from_product**](AccountApi.md#get_user_from_product) | **GET** /account/user/from/product/{id_product} | Get user from product
-[**link_payment**](AccountApi.md#link_payment) | **GET** /account/link/payment/{plan}/{email} | Link payment
-[**service_account_test_thiago_get**](AccountApi.md#service_account_test_thiago_get) | **GET** /account/test-thiago | Service
+[**add_bagy_token_enterprise**](EnterpriseApi.md#add_bagy_token_enterprise) | **PUT** /enterprise/add-bagy-token | Add bagy token to enterprise
+[**add_business_id_account_enterprise**](EnterpriseApi.md#add_business_id_account_enterprise) | **PUT** /enterprise/add-business-id-account/meta | Add business id account to enterprise
+[**add_phone_number_enterprise**](EnterpriseApi.md#add_phone_number_enterprise) | **PUT** /enterprise/phone-number/meta | Add phone number to enterprise
+[**add_token_meta_enterprise**](EnterpriseApi.md#add_token_meta_enterprise) | **PUT** /enterprise/add-token/meta | Add token meta to enterprise
+[**create_enterprise**](EnterpriseApi.md#create_enterprise) | **POST** /enterprise/ | Create enterprise
+[**return_all_enterprise**](EnterpriseApi.md#return_all_enterprise) | **GET** /enterprise/all | Return all enterprise
+[**return_analytics_enterprise**](EnterpriseApi.md#return_analytics_enterprise) | **GET** /enterprise/return/analytics/{id_product} | Return analytics enterprise
 
 
-# **add_user_in_product**
-> AccountPostResponseNoToken add_user_in_product(email, id_product, rule)
+# **add_bagy_token_enterprise**
+> ProductPostResponse add_bagy_token_enterprise(add_bagy_token_product_put)
 
-Add user in product
+Add bagy token to enterprise
 
-This endpoint is used to add user in product.If plan associated with product reach the limit, the status code return is 401.
+Add bagy token to enterprise
 
 ### Example
 
@@ -27,7 +26,8 @@ This endpoint is used to add user in product.If plan associated with product rea
 
 ```python
 import openapi_client
-from openapi_client.models.account_post_response_no_token import AccountPostResponseNoToken
+from openapi_client.models.add_bagy_token_product_put import AddBagyTokenProductPut
+from openapi_client.models.product_post_response import ProductPostResponse
 from openapi_client.rest import ApiException
 from pprint import pprint
 
@@ -50,18 +50,16 @@ configuration = openapi_client.Configuration(
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AccountApi(api_client)
-    email = 'email_example' # str | 
-    id_product = 'id_product_example' # str | 
-    rule = 'rule_example' # str | 
+    api_instance = openapi_client.EnterpriseApi(api_client)
+    add_bagy_token_product_put = openapi_client.AddBagyTokenProductPut() # AddBagyTokenProductPut | 
 
     try:
-        # Add user in product
-        api_response = api_instance.add_user_in_product(email, id_product, rule)
-        print("The response of AccountApi->add_user_in_product:\n")
+        # Add bagy token to enterprise
+        api_response = api_instance.add_bagy_token_enterprise(add_bagy_token_product_put)
+        print("The response of EnterpriseApi->add_bagy_token_enterprise:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AccountApi->add_user_in_product: %s\n" % e)
+        print("Exception when calling EnterpriseApi->add_bagy_token_enterprise: %s\n" % e)
 ```
 
 
@@ -71,87 +69,15 @@ with openapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **str**|  | 
- **id_product** | **str**|  | 
- **rule** | **str**|  | 
+ **add_bagy_token_product_put** | [**AddBagyTokenProductPut**](AddBagyTokenProductPut.md)|  | 
 
 ### Return type
 
-[**AccountPostResponseNoToken**](AccountPostResponseNoToken.md)
+[**ProductPostResponse**](ProductPostResponse.md)
 
 ### Authorization
 
 [JwtBearer](../README.md#JwtBearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **create_account**
-> AccountPostResponse create_account(account_post)
-
-Create account
-
-This endpoint is used to create an account.
-
-### Example
-
-
-```python
-import openapi_client
-from openapi_client.models.account_post import AccountPost
-from openapi_client.models.account_post_response import AccountPostResponse
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://mios-direct.azurewebsites.net
-# See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
-    host = "https://mios-direct.azurewebsites.net"
-)
-
-
-# Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = openapi_client.AccountApi(api_client)
-    account_post = openapi_client.AccountPost() # AccountPost | 
-
-    try:
-        # Create account
-        api_response = api_instance.create_account(account_post)
-        print("The response of AccountApi->create_account:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AccountApi->create_account: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_post** | [**AccountPost**](AccountPost.md)|  | 
-
-### Return type
-
-[**AccountPostResponse**](AccountPostResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
@@ -167,12 +93,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_user_in_product**
-> AccountPostResponseNoToken delete_user_in_product(email, id_product)
+# **add_business_id_account_enterprise**
+> ProductPutResponse add_business_id_account_enterprise(add_token_meta_product_put)
 
-Delete user in product
+Add business id account to enterprise
 
-This endpoint is used to delete user in product.Warning: If user is the owner of product, the product is deleted.
+This endpoint is used to add business id account to enterprise.
 
 ### Example
 
@@ -180,7 +106,8 @@ This endpoint is used to delete user in product.Warning: If user is the owner of
 
 ```python
 import openapi_client
-from openapi_client.models.account_post_response_no_token import AccountPostResponseNoToken
+from openapi_client.models.add_token_meta_product_put import AddTokenMetaProductPut
+from openapi_client.models.product_put_response import ProductPutResponse
 from openapi_client.rest import ApiException
 from pprint import pprint
 
@@ -203,17 +130,16 @@ configuration = openapi_client.Configuration(
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AccountApi(api_client)
-    email = 'email_example' # str | 
-    id_product = 'id_product_example' # str | 
+    api_instance = openapi_client.EnterpriseApi(api_client)
+    add_token_meta_product_put = openapi_client.AddTokenMetaProductPut() # AddTokenMetaProductPut | 
 
     try:
-        # Delete user in product
-        api_response = api_instance.delete_user_in_product(email, id_product)
-        print("The response of AccountApi->delete_user_in_product:\n")
+        # Add business id account to enterprise
+        api_response = api_instance.add_business_id_account_enterprise(add_token_meta_product_put)
+        print("The response of EnterpriseApi->add_business_id_account_enterprise:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AccountApi->delete_user_in_product: %s\n" % e)
+        print("Exception when calling EnterpriseApi->add_business_id_account_enterprise: %s\n" % e)
 ```
 
 
@@ -223,12 +149,11 @@ with openapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **str**|  | 
- **id_product** | **str**|  | 
+ **add_token_meta_product_put** | [**AddTokenMetaProductPut**](AddTokenMetaProductPut.md)|  | 
 
 ### Return type
 
-[**AccountPostResponseNoToken**](AccountPostResponseNoToken.md)
+[**ProductPutResponse**](ProductPutResponse.md)
 
 ### Authorization
 
@@ -236,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -248,83 +173,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_account_by_email_and_password**
-> AccountPostResponse get_account_by_email_and_password(email, password)
+# **add_phone_number_enterprise**
+> ProductPostResponse add_phone_number_enterprise(contact_product_put)
 
-Get account by email and password
+Add phone number to enterprise
 
-This endpoint is used to get an account by email and password. The token is returned in the response.
-
-### Example
-
-
-```python
-import openapi_client
-from openapi_client.models.account_post_response import AccountPostResponse
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://mios-direct.azurewebsites.net
-# See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
-    host = "https://mios-direct.azurewebsites.net"
-)
-
-
-# Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = openapi_client.AccountApi(api_client)
-    email = 'email_example' # str | 
-    password = 'password_example' # str | 
-
-    try:
-        # Get account by email and password
-        api_response = api_instance.get_account_by_email_and_password(email, password)
-        print("The response of AccountApi->get_account_by_email_and_password:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AccountApi->get_account_by_email_and_password: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **str**|  | 
- **password** | **str**|  | 
-
-### Return type
-
-[**AccountPostResponse**](AccountPostResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_account_by_token**
-> AccountPostResponse get_account_by_token()
-
-Get account by token
-
-This endpoint is used to get an account by token. The token have to be in the header (Authorization: Bearer {token}).
+This endpoint is used to add a phone number to an enterprise.
 
 ### Example
 
@@ -332,7 +186,8 @@ This endpoint is used to get an account by token. The token have to be in the he
 
 ```python
 import openapi_client
-from openapi_client.models.account_post_response import AccountPostResponse
+from openapi_client.models.contact_product_put import ContactProductPut
+from openapi_client.models.product_post_response import ProductPostResponse
 from openapi_client.rest import ApiException
 from pprint import pprint
 
@@ -355,15 +210,254 @@ configuration = openapi_client.Configuration(
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AccountApi(api_client)
+    api_instance = openapi_client.EnterpriseApi(api_client)
+    contact_product_put = openapi_client.ContactProductPut() # ContactProductPut | 
 
     try:
-        # Get account by token
-        api_response = api_instance.get_account_by_token()
-        print("The response of AccountApi->get_account_by_token:\n")
+        # Add phone number to enterprise
+        api_response = api_instance.add_phone_number_enterprise(contact_product_put)
+        print("The response of EnterpriseApi->add_phone_number_enterprise:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AccountApi->get_account_by_token: %s\n" % e)
+        print("Exception when calling EnterpriseApi->add_phone_number_enterprise: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contact_product_put** | [**ContactProductPut**](ContactProductPut.md)|  | 
+
+### Return type
+
+[**ProductPostResponse**](ProductPostResponse.md)
+
+### Authorization
+
+[JwtBearer](../README.md#JwtBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **add_token_meta_enterprise**
+> ProductPutResponse add_token_meta_enterprise(add_token_meta_product_put)
+
+Add token meta to enterprise
+
+This endpoint is used to add token meta to enterprise.
+
+### Example
+
+* Bearer Authentication (JwtBearer):
+
+```python
+import openapi_client
+from openapi_client.models.add_token_meta_product_put import AddTokenMetaProductPut
+from openapi_client.models.product_put_response import ProductPutResponse
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://mios-direct.azurewebsites.net
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://mios-direct.azurewebsites.net"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JwtBearer
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openapi_client.EnterpriseApi(api_client)
+    add_token_meta_product_put = openapi_client.AddTokenMetaProductPut() # AddTokenMetaProductPut | 
+
+    try:
+        # Add token meta to enterprise
+        api_response = api_instance.add_token_meta_enterprise(add_token_meta_product_put)
+        print("The response of EnterpriseApi->add_token_meta_enterprise:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling EnterpriseApi->add_token_meta_enterprise: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **add_token_meta_product_put** | [**AddTokenMetaProductPut**](AddTokenMetaProductPut.md)|  | 
+
+### Return type
+
+[**ProductPutResponse**](ProductPutResponse.md)
+
+### Authorization
+
+[JwtBearer](../README.md#JwtBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_enterprise**
+> ProductPostResponse create_enterprise(product_post)
+
+Create enterprise
+
+This endpoint is used to create an enterprise.
+
+### Example
+
+* Bearer Authentication (JwtBearer):
+
+```python
+import openapi_client
+from openapi_client.models.product_post import ProductPost
+from openapi_client.models.product_post_response import ProductPostResponse
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://mios-direct.azurewebsites.net
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://mios-direct.azurewebsites.net"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JwtBearer
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openapi_client.EnterpriseApi(api_client)
+    product_post = openapi_client.ProductPost() # ProductPost | 
+
+    try:
+        # Create enterprise
+        api_response = api_instance.create_enterprise(product_post)
+        print("The response of EnterpriseApi->create_enterprise:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling EnterpriseApi->create_enterprise: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **product_post** | [**ProductPost**](ProductPost.md)|  | 
+
+### Return type
+
+[**ProductPostResponse**](ProductPostResponse.md)
+
+### Authorization
+
+[JwtBearer](../README.md#JwtBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **return_all_enterprise**
+> ProductPostResponse return_all_enterprise()
+
+Return all enterprise
+
+This endpoint is used to return all enterprise.
+
+### Example
+
+* Bearer Authentication (JwtBearer):
+
+```python
+import openapi_client
+from openapi_client.models.product_post_response import ProductPostResponse
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://mios-direct.azurewebsites.net
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://mios-direct.azurewebsites.net"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JwtBearer
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openapi_client.EnterpriseApi(api_client)
+
+    try:
+        # Return all enterprise
+        api_response = api_instance.return_all_enterprise()
+        print("The response of EnterpriseApi->return_all_enterprise:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling EnterpriseApi->return_all_enterprise: %s\n" % e)
 ```
 
 
@@ -374,7 +468,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**AccountPostResponse**](AccountPostResponse.md)
+[**ProductPostResponse**](ProductPostResponse.md)
 
 ### Authorization
 
@@ -393,12 +487,12 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_user_from_product**
-> AccountPostResponseNoToken get_user_from_product(id_product)
+# **return_analytics_enterprise**
+> ProductPostResponse return_analytics_enterprise(enterprise)
 
-Get user from product
+Return analytics enterprise
 
-This endpoint is used to get user from product.Example if id_product is '123321' the response is all users from product '123321'
+This endpoint is used to return analytics enterprise.
 
 ### Example
 
@@ -406,7 +500,7 @@ This endpoint is used to get user from product.Example if id_product is '123321'
 
 ```python
 import openapi_client
-from openapi_client.models.account_post_response_no_token import AccountPostResponseNoToken
+from openapi_client.models.product_post_response import ProductPostResponse
 from openapi_client.rest import ApiException
 from pprint import pprint
 
@@ -429,16 +523,16 @@ configuration = openapi_client.Configuration(
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AccountApi(api_client)
-    id_product = 'id_product_example' # str | 
+    api_instance = openapi_client.EnterpriseApi(api_client)
+    enterprise = 'enterprise_example' # str | 
 
     try:
-        # Get user from product
-        api_response = api_instance.get_user_from_product(id_product)
-        print("The response of AccountApi->get_user_from_product:\n")
+        # Return analytics enterprise
+        api_response = api_instance.return_analytics_enterprise(enterprise)
+        print("The response of EnterpriseApi->return_analytics_enterprise:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AccountApi->get_user_from_product: %s\n" % e)
+        print("Exception when calling EnterpriseApi->return_analytics_enterprise: %s\n" % e)
 ```
 
 
@@ -448,11 +542,11 @@ with openapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id_product** | **str**|  | 
+ **enterprise** | **str**|  | 
 
 ### Return type
 
-[**AccountPostResponseNoToken**](AccountPostResponseNoToken.md)
+[**ProductPostResponse**](ProductPostResponse.md)
 
 ### Authorization
 
@@ -469,148 +563,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **link_payment**
-> AccountPostResponseNoToken link_payment(plan, email)
-
-Link payment
-
-This endpoint is used to create a link payment.
-
-### Example
-
-* Bearer Authentication (JwtBearer):
-
-```python
-import openapi_client
-from openapi_client.models.account_post_response_no_token import AccountPostResponseNoToken
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://mios-direct.azurewebsites.net
-# See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
-    host = "https://mios-direct.azurewebsites.net"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: JwtBearer
-configuration = openapi_client.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = openapi_client.AccountApi(api_client)
-    plan = 'plan_example' # str | 
-    email = 'email_example' # str | 
-
-    try:
-        # Link payment
-        api_response = api_instance.link_payment(plan, email)
-        print("The response of AccountApi->link_payment:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AccountApi->link_payment: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **plan** | **str**|  | 
- **email** | **str**|  | 
-
-### Return type
-
-[**AccountPostResponseNoToken**](AccountPostResponseNoToken.md)
-
-### Authorization
-
-[JwtBearer](../README.md#JwtBearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **service_account_test_thiago_get**
-> object service_account_test_thiago_get()
-
-Service
-
-### Example
-
-
-```python
-import openapi_client
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://mios-direct.azurewebsites.net
-# See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
-    host = "https://mios-direct.azurewebsites.net"
-)
-
-
-# Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = openapi_client.AccountApi(api_client)
-
-    try:
-        # Service
-        api_response = api_instance.service_account_test_thiago_get()
-        print("The response of AccountApi->service_account_test_thiago_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AccountApi->service_account_test_thiago_get: %s\n" % e)
-```
-
-
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-**object**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

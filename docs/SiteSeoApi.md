@@ -19,6 +19,7 @@ Create site seo
 
 ### Example
 
+* Bearer Authentication (JwtBearer):
 
 ```python
 import openapi_client
@@ -33,6 +34,15 @@ configuration = openapi_client.Configuration(
     host = "https://mios-direct.azurewebsites.net"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JwtBearer
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -64,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JwtBearer](../README.md#JwtBearer)
 
 ### HTTP request headers
 
@@ -89,6 +99,7 @@ Return all site seo to process
 
 ### Example
 
+* Bearer Authentication (JwtBearer):
 
 ```python
 import openapi_client
@@ -102,6 +113,15 @@ configuration = openapi_client.Configuration(
     host = "https://mios-direct.azurewebsites.net"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JwtBearer
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -129,7 +149,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[JwtBearer](../README.md#JwtBearer)
 
 ### HTTP request headers
 
@@ -153,6 +173,7 @@ Return site seo by base 64 url
 
 ### Example
 
+* Bearer Authentication (JwtBearer):
 
 ```python
 import openapi_client
@@ -166,6 +187,15 @@ configuration = openapi_client.Configuration(
     host = "https://mios-direct.azurewebsites.net"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JwtBearer
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -199,7 +229,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JwtBearer](../README.md#JwtBearer)
 
 ### HTTP request headers
 
@@ -224,6 +254,7 @@ Update site seo score
 
 ### Example
 
+* Bearer Authentication (JwtBearer):
 
 ```python
 import openapi_client
@@ -238,6 +269,15 @@ configuration = openapi_client.Configuration(
     host = "https://mios-direct.azurewebsites.net"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JwtBearer
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -269,7 +309,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JwtBearer](../README.md#JwtBearer)
 
 ### HTTP request headers
 
