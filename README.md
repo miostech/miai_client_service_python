@@ -116,7 +116,7 @@ Class | Method | HTTP request | Description
 *EnterpriseApi* | [**add_token_meta_enterprise**](docs/EnterpriseApi.md#add_token_meta_enterprise) | **PUT** /enterprise/add-token/meta | Add token meta to enterprise
 *EnterpriseApi* | [**create_enterprise**](docs/EnterpriseApi.md#create_enterprise) | **POST** /enterprise/ | Create enterprise
 *EnterpriseApi* | [**return_all_enterprise**](docs/EnterpriseApi.md#return_all_enterprise) | **GET** /enterprise/all | Return all enterprise
-*EnterpriseApi* | [**return_analytics_enterprise**](docs/EnterpriseApi.md#return_analytics_enterprise) | **GET** /enterprise/return/analytics/{id_product} | Return analytics enterprise
+*EnterpriseApi* | [**return_analytics_enterprise**](docs/EnterpriseApi.md#return_analytics_enterprise) | **GET** /enterprise/return/analytics/{enterprise} | Return analytics enterprise
 *InvoiceApi* | [**return_invoice_by_email**](docs/InvoiceApi.md#return_invoice_by_email) | **GET** /invoice/{email} | Return invoice by email
 *ProductApi* | [**add_bagy_token_product**](docs/ProductApi.md#add_bagy_token_product) | **PUT** /product/add-bagy-token | Add bagy token to product
 *ProductApi* | [**add_business_id_account_product**](docs/ProductApi.md#add_business_id_account_product) | **PUT** /product/add-business-id-account/meta | Add business id account to product

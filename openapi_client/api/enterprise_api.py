@@ -1884,11 +1884,9 @@ class EnterpriseApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        # process the query parameters
         if enterprise is not None:
-            
-            _query_params.append(('enterprise', enterprise))
-            
+            _path_params['enterprise'] = enterprise
+        # process the query parameters
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1910,7 +1908,7 @@ class EnterpriseApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/enterprise/return/analytics/{id_product}',
+            resource_path='/enterprise/return/analytics/{enterprise}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

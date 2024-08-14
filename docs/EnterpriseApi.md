@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**add_token_meta_enterprise**](EnterpriseApi.md#add_token_meta_enterprise) | **PUT** /enterprise/add-token/meta | Add token meta to enterprise
 [**create_enterprise**](EnterpriseApi.md#create_enterprise) | **POST** /enterprise/ | Create enterprise
 [**return_all_enterprise**](EnterpriseApi.md#return_all_enterprise) | **GET** /enterprise/all | Return all enterprise
-[**return_analytics_enterprise**](EnterpriseApi.md#return_analytics_enterprise) | **GET** /enterprise/return/analytics/{id_product} | Return analytics enterprise
+[**return_analytics_enterprise**](EnterpriseApi.md#return_analytics_enterprise) | **GET** /enterprise/return/analytics/{enterprise} | Return analytics enterprise
 
 
 # **add_bagy_token_enterprise**
